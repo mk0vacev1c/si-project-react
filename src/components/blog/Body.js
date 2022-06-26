@@ -5,6 +5,7 @@ import { useFirestore } from '../../hooks/useFirestore';
 import { AddBlog } from './AddBlog';
 import { BlogCard } from './BlogCard';
 import { ProgressBar } from './ProgressBar';
+import FooterSticky from '../FooterSticky';
 
 export const BlogBody = () => {
   const [blog, setBlog] = useState(null);
@@ -28,6 +29,7 @@ export const BlogBody = () => {
           </div>
         )}
       </div>
+      <FooterSticky/>
     </div>
   );
 };

@@ -24,7 +24,9 @@ export const AuthProvider = ({ children }) => {
       return setGlobalMsg('Please login first');
     }
 
-    let newPrice = Math.floor(price + 10);
+    let newPrice = Number(price) + 10;
+    console.log("Price" + price)
+    console.log("Price + bid" + newPrice);
     const db = firestoreApp.collection('auctions');
 
     return db.doc(auctionId).update({

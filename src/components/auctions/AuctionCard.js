@@ -41,7 +41,7 @@ const renderer = ({ days, hours, minutes, seconds, completed, props }) => {
               ) : props.owner.email === props.item.email ? (
                 <div
                   onClick={() => props.endAuction(props.item.id)}
-                  className="btn btn-outline-secondary"
+                  className="btn btn-outline-secondary mt-3"
                 >
                   Cancel Auction
                 </div>
@@ -52,7 +52,7 @@ const renderer = ({ days, hours, minutes, seconds, completed, props }) => {
                   onClick={() =>
                     props.bidAuction(props.item.id, props.item.curPrice)
                   }
-                  className="btn btn-outline-secondary"
+                  className="btn btn-outline-secondary mt-3"
                 >
                   Bid
                 </div>
@@ -60,6 +60,12 @@ const renderer = ({ days, hours, minutes, seconds, completed, props }) => {
             </div>
             <p className="display-6">${props.item.curPrice}</p>
           </div>
+          {props.item.curWinner ? (<small className="d-flex justify-content-between align-item-center">
+              1st place: {props.item.curWinner.replace('@gmail.com', '')}
+            </small>) : (<small className="d-flex justify-content-between align-item-center">
+              No one made a bid yet, be the first one!
+            </small>)}
+            <center><small className="text-right"> Auctioned by: {props.item.email}</small></center>
         </div>
       </div>
     </div>

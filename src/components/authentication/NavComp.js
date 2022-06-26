@@ -5,12 +5,10 @@ import { RegisterComp } from "./RegisterComp";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Home from "../Home";
 import Shop from "../Shop";
-import Contact from "../Contact";
 import { Modal } from "react-bootstrap";
 import { Form } from "react-bootstrap";
 import { Button } from "react-bootstrap";
 import { AuctionBody } from "../auctions/Body";
-import { AuthProvider } from "../../context/AuthContext";
 import { BlogBody } from "../blog/Body";
 
 import { firestoreApp, timestamp } from "../../config/firebase";
@@ -235,7 +233,6 @@ export const NavComp = () => {
             <Route path="/" element={<Home />}></Route>
             <Route path="/home" element={<Home />}></Route>
             <Route path="/shop" element={<Shop />}></Route>
-            <Route path="/contact" element={<Contact />}></Route>
             <Route path="/auctions" element={<AuctionBody />}></Route>
             <Route path="/blog" element={<BlogBody />}></Route>
           </Routes>

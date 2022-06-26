@@ -1,5 +1,5 @@
 {
-  "name": "auctioneer",
+  "name": "no-shave-nov",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -7,7 +7,7 @@
     "start": "react-scripts start"
   },
   "keywords": [],
-  "author": "Matthew Budiman",
+  "author": "Grupa 4",
   "license": "MIT",
   "dependencies": {
     "bootstrap": "^5.0.0-beta2",
