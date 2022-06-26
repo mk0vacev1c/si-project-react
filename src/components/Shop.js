@@ -13,19 +13,28 @@ const Shop = () => {
   
   const { currentUser } = useContext(AuthContext);
   const [showForm, setShowForm] = useState(false);
+  const [productId, setProductId] = useState('');
   const firstName = useRef();
   const lastName = useRef();
   const amount = useRef();
-  const cvcNumber = useRef();
   const creditCard = useRef();
   const comment = useRef();
   const emailRef = useRef();
   const billingAddress = useRef(); 
-  const openForm = () => setShowForm(true);
+  
+  const openForm = (productName) => {
+    setShowForm(true);
+    setProductId(productName);
+  };
   const closeForm = () => setShowForm(false);
 
-  const cena = "$50";
+  const tShirt = 'T-Shirt';
+  const phoneCase = 'Phone case';
+  const cup = 'Cup';
 
+  const tShirtPrice = 80.00;
+  const phoneCasePrice = 18.00;
+  const cupPrice = 25.00;
   const submitForm = async (e) => {
     e.preventDefault();
 
@@ -58,12 +67,12 @@ const Shop = () => {
             <img class="card-img-top" src="../shirt.png" alt="..." />
             <div class="card-body p-4">
               <div class="text-center">
-                <h5 class="fw-bolder">T-Shirt</h5>
+                <h5 class="fw-bolder">{tShirt}</h5>
                 $80.00
               </div>
             </div>
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-              <div class="text-center" onClick={openForm}><a class="btn btn-outline-dark mt-auto" href="#">Buy</a></div>
+              <div class="text-center" onClick={() => openForm(tShirt)}><a class="btn btn-outline-dark mt-auto" href="#">Buy</a></div>
             </div>
           </div>
         </div>
@@ -73,7 +82,7 @@ const Shop = () => {
             <img class="card-img-top" src="../case.png" alt="..." />
             <div class="card-body p-4">
               <div class="text-center">
-                <h5 class="fw-bolder">Phone case</h5>
+                <h5 class="fw-bolder">{phoneCase}</h5>
                 <div class="d-flex justify-content-center small text-warning mb-2">
                   <div class="bi-star-fill"></div>
                   <div class="bi-star-fill"></div>
@@ -86,7 +95,7 @@ const Shop = () => {
               </div>
             </div>
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-              <div class="text-center" onClick={openForm}><a class="btn btn-outline-dark mt-auto" href="#">Buy</a></div>
+              <div class="text-center" onClick={() => openForm(phoneCase)}><a class="btn btn-outline-dark mt-auto" href="#">Buy</a></div>
             </div>
           </div>
         </div>
@@ -96,13 +105,13 @@ const Shop = () => {
             <img class="card-img-top" src="../Cup1.PNG" alt="..." />
             <div class="card-body p-4">
               <div class="text-center">
-                <h5 class="fw-bolder">Cup</h5>
+                <h5 class="fw-bolder">{cup}</h5>
                 <span class="text-muted text-decoration-line-through">$50.00 </span>
                 $25.00
               </div>
             </div>
             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-              <div class="text-center" onClick={openForm}><a class="btn btn-outline-dark mt-auto" href="#">Buy</a></div>
+              <div class="text-center" onClick={() => openForm(cup)}><a class="btn btn-outline-dark mt-auto" href="#">Buy</a></div>
             </div>
           </div>
         </div>
@@ -132,7 +141,9 @@ const Shop = () => {
             </Form.Group>
             <Form.Group>
               <Form.Label>Cost</Form.Label>
-              <Form.Control type="text" readOnly value={cena} ref={amount} />
+              {productId == 'T-Shirt' ? (<Form.Control type="text" readOnly value={'$' + tShirtPrice} ref={amount} />) 
+              : productId == 'Phone case' ? (<Form.Control type="text" readOnly value={'$' + phoneCasePrice} ref={amount} />) 
+              : (<Form.Control type="text" readOnly value={'$' + cupPrice} ref={amount} />)}
             </Form.Group>
             <Form.Group>
               <Form.Label>Credit card number</Form.Label>
